@@ -3,7 +3,6 @@ const app = express();
 
 const userRoute = require('./routes/user');
 
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
