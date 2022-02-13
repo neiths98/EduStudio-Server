@@ -16,10 +16,9 @@ function execute(query, params=[]) {
       if (error)
         reject(error);
       else
-        resolve(error);
+        resolve(result);
     });
   });
 }
 
-exports.connection = pool;
 exports.execute = execute;
