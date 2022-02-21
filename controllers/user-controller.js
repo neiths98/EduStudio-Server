@@ -48,11 +48,11 @@ exports.signUp = async (req, res, next) => {
     const getUserQuery = 'SELECT id, email FROM user WHERE id = ? or email = ?';
     const getUserResult = await mysql.execute(getUserQuery, [newUser.id, newUser.email]);
 
-    if (getUserResult) {
+    if (getUserResult.length) {
       if (getUserResult[0].email !== newUser.email)
         return res.status(500).send({ error: "Erro inesperado, por favor tente novamente" });
       else
-        return res.status(500).send({ error: 'Usuário já cadastrado no sistema '});
+        return res.status(500).send({ error: "Usuário já cadastrado no sistema" });
     }
     
     // Cadastro do usuário com senha criptografada  
