@@ -1,6 +1,33 @@
 const mysql = require('../mysql');
 const generateID = require('../functions').generateID;
 
+// GETS
+exports.getCoursesFromUser = async (req, res, next) => {
+  try {
+    const queryParams = { id: req.body.id };
+    const getCoursesFromUserQuery = 'SELECT * FROM course WHERE user_id = ?';
+    const result = await mysql.execute(getCoursesFromUserQuery, [queryParams.id]);
+
+    if (!result.length)
+      return res.status(200).send({ message: 'Usuário não possui cursos' });
+
+    const response = {
+      quantity: result.length,
+      courses: result.map((course) => {
+        return {
+          id: course.id,
+          title: course.title
+        };
+      })
+    };
+
+    return res.status(200).send(response);
+
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+};
+
 // POST
 // TODO: adicionar middleware de login required
 exports.createUserCourse = async (req, res, next) => {
