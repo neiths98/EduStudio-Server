@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const userRoute = require('./routes/user');
+const courseRoute = require('./routes/course');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/user', userRoute);
+app.use('/course', courseRoute);
 
 // Caso não entre em nenhuma das rotas anteriores
 app.use((req, res, next) => {
