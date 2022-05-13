@@ -9,17 +9,11 @@ exports.createUserCourse = async (req, res, next) => {
       id: req.body.id,
       title: req.body.title
     };
-    const getUserRealIdQuery = 'SELECT user_id from user WHERE id = ?';
-    const getUserRealIdQueryResponse = await mysql.execute(getUserRealIdQuery, [queryParams.id]);
-    const userRealId = getUserRealIdQueryResponse[0].user_id;
-
-    if (!userRealId)
-      return res.status(404).send({ message: 'Usuário não encontrado' });
 
     const newCourse = {
       id: generateID(),
       title: queryParams.title,
-      user_id: userRealId
+      user_id: queryParams.id
     }
 
     const createUserCourseQuery = `INSERT INTO course (id, title, user_id) VALUES (?, ?, ?)`;
