@@ -9,7 +9,7 @@ exports.getUser = async (req, res, next) => {
     const getUsersQuery = 'SELECT * FROM user';
     const result = await mysql.execute(getUsersQuery);
 
-    if (!result)
+    if (!result.length)
       return res.status(200).send({ message: 'Não há usuários cadastrados' });
 
     const response = {
