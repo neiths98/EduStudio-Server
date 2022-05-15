@@ -3,7 +3,7 @@ const route = express.Router();
 
 const courseController = require('../controllers/course-controller');
 
-route.get('/user-course', courseController.getCoursesFromUser);
+route.get('/user/:id', courseController.getCoursesFromUser);
 
 route.post('/new', courseController.createUserCourse);
 

@@ -4,7 +4,7 @@ const generateID = require('../functions/generateId').generateID;
 // GETS
 exports.getCoursesFromUser = async (req, res, next) => {
   try {
-    const queryParams = { id: req.body.id };
+    const queryParams = { id: req.params.id };
     const getCoursesFromUserQuery = 'SELECT * FROM course WHERE user_id = ?';
     const result = await mysql.execute(getCoursesFromUserQuery, [queryParams.id]);
 
