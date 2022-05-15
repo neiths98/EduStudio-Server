@@ -1,7 +1,7 @@
-const mysql = require('../mysql');
+const mysql = require('../infra/mysql');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const generateID = require('../functions').generateID;
+const generateID = require('../functions/generateId').generateID;
 
 // GETS
 exports.getUser = async (req, res, next) => {

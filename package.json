@@ -4,7 +4,7 @@
   "description": "EduStudio API",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon src/infra/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nathan",

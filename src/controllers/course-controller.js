@@ -1,5 +1,5 @@
-const mysql = require('../mysql');
-const generateID = require('../functions').generateID;
+const mysql = require('../infra/mysql');
+const generateID = require('../functions/generateId').generateID;
 
 // GETS
 exports.getCoursesFromUser = async (req, res, next) => {
